@@ -1,14 +1,15 @@
 #!/bin/bash
 ipath="/Users/ivababukova/uni/dataGenerator/instances/"
 apath="/Users/ivababukova/uni/solversTests/answers/"
+jar="/Users/ivababukova/uni/TPSolver/TPSolver/out/artifacts/TPSolver1_jar/TPSolver1.jar"
 for i in $( ls $ipath ); do
-    echo java -jar TPSolver1.jar $ipath$i -ip -min -cost ">" $apath$i"_min_cost_ip"
-    echo java -jar TPSolver1.jar $ipath$i -ip -min -flights ">" $apath$i"_min_flights_ip"
-    echo java -jar TPSolver1.jar $ipath$i -ip -min -trip_duration ">" $apath$i"_min_trip_ip"
-    echo java -jar TPSolver1.jar $ipath$i -ip -min -connections ">" $apath$i"_min_connections_ip"
-    echo java -jar TPSolver1.jar $ipath$i -cp -min -cost ">" $apath$i"_min_cost_cp"
-    echo java -jar TPSolver1.jar $ipath$i -cp -min -flights ">" $apath$i"_min_flights_cp"
-    echo java -jar TPSolver1.jar $ipath$i -cp -min -trip_duration ">" $apath$i"_min_trip_cp"
-    echo java -jar TPSolver1.jar $ipath$i -cp -min -connections ">" $apath$i"_min_connections_cp"
+    java -Xmx40g -jar $jar $ipath$i -ip -min -cost > $apath$i"_min_cost_ip"
+    java -Xmx40g -jar $jar $ipath$i -ip -min -flights > $apath$i"_min_flights_ip"
+    java -Xmx40g -jar $jar $ipath$i -ip -min -trip_duration > $apath$i"_min_trip_ip"
+    java -Xmx40g -jar $jar $ipath$i -ip -min -connections > $apath$i"_min_connections_ip"
+    java -Xmx40g -jar $jar $ipath$i -cp -min -cost > $apath$i"_min_cost_cp"
+    java -Xmx40g -jar $jar $ipath$i -cp -min -flights > $apath$i"_min_flights_cp"
+    java -Xmx40g -jar $jar $ipath$i -cp -min -trip_duration > $apath$i"_min_trip_cp"
+    java -Xmx40g -jar $jar $ipath$i -cp -min -connections > $apath$i"_min_connections_cp"
     echo "solved" $i
 done
