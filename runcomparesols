@@ -6,7 +6,6 @@ ip="_ip"
 declare -a arr=("_min_trip" "_min_cost" "_min_trip" "_min_flights")
 for i in $( ls $ipath ); do
     for j in $"${arr[@]}"; do
-        echo $i$j
         python compareSols.py $apath$i$j$cp $apath$i$j$ip
     done
 done

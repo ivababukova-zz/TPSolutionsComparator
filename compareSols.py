@@ -16,29 +16,32 @@ def readSol(solfile):
                     trip.append(int(flight))
                 sol.append(trip)
             elif len(line) == 2:
-                sol.append(float(line[1]))
+                sol.append(int(float(line[1])))
     return sols
 
-def compare(sols1, sols2):
+def compare(sols1, sols2, toprint):
     areEqual = True
     for sol1 in sols1:
         if not sol1 in sols2:
             areEqual = False
             print(sol1)
     if not areEqual:
-        print("not in ip")
-    areEqual = True
+        print("not in ip, ", toprint)
+        areEqual = True
     for sol2 in sols2:
         if not sol2 in sols1:
             areEqual = False
             print(sol2)
     if not areEqual:
-        print("not in cp")
+        print("not in cp, ", toprint)
 
 # python compareSols.py <cpsol filename> <ipsol filename>
-ipfile = sys.argv[1]
-cpfile = sys.argv[2]
+ipfile = sys.argv[2]
+cpfile = sys.argv[1]
 
+toprint = ipfile.rstrip("ip")
+toprint = toprint.rstrip("_")
+toprint = toprint.lstrip("/Users/ivababukova/uni/solversTests/answers/")
 ipsol = readSol(ipfile)
 cpsol = readSol(cpfile)
-compare(ipsol, cpsol)
+compare(cpsol, ipsol, toprint)
